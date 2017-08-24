@@ -9,7 +9,6 @@ const Youtube = require('youtube-api'),
 const chokidar = require('chokidar');
 const videoLocation = process.env.VIDEO_LOCATION;
 const videoDescription = process.env.VIDEO_DESRCIPTION || new Date();
-// https://support.google.com/youtube/troubleshooter/2888402
 const allowedExtensions = [
   'mov',
   'mpeg4',
@@ -82,7 +81,6 @@ uploadVideo = (videoPath, videoName) => {
 createDirectoryWatcher = () => {
   const joinedExtensions = allowedExtensions.join(',');
   const location = `${videoLocation}/**/*.{${joinedExtensions}}`;
-  console.log(location);
   const watcher = chokidar.watch(location, {
     ignored: /(^|[\/\\])\../,
     persistent: true,
