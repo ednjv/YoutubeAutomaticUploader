@@ -9,6 +9,7 @@ const Youtube = require('youtube-api'),
 const chokidar = require('chokidar');
 const videoLocation = process.env.VIDEO_LOCATION;
 const videoDescription = process.env.VIDEO_DESRCIPTION || new Date();
+const credentialsLocation = process.env.CREDENTIALS_LOCATION;
 const allowedExtensions = [
   'mov',
   'mpeg4',
@@ -27,7 +28,12 @@ if (!videoLocation) {
   process.exit();
 }
 
-const CREDENTIALS = readJson(`${__dirname}/credentials.json`);
+if (!credentialsLocation) {
+  console.log('Please specify your credentials location');
+  process.exit();
+}
+
+const CREDENTIALS = readJson(credentialsLocation);
 
 const server = new Lien({
   host: 'localhost',
