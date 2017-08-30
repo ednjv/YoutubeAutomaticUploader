@@ -77,6 +77,7 @@ uploadVideo = (videoPath, videoName) => {
       body: fs.createReadStream(videoPath)
     }
   }, (err) => {
+    isUploading = false;
     if (err) console.log(err);
     console.log('Done.');
   });
