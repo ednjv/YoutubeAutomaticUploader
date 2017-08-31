@@ -89,7 +89,6 @@ createDirectoryWatcher = () => {
   const joinedExtensions = allowedExtensions.join(',');
   const location = `${videoLocation}/**/*.{${joinedExtensions}}`;
   const watcher = chokidar.watch(location, {
-    ignored: /(^|[\/\\])\../,
     persistent: true,
     ignoreInitial: true
   });
